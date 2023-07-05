@@ -4,24 +4,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Cat {
 
-    private final String id, text, type, user, upvotes;
+    private final String id, text, type, user;
+    private final int upvotes;
 
     public Cat(
             @JsonProperty("id") String id,
             @JsonProperty("text") String text,
             @JsonProperty("type") String type,
             @JsonProperty("user") String user,
-            @JsonProperty("upvotes") String upvotes
+            @JsonProperty("upvotes") int upvotes
     ) {
         this.id = id;
         this.text = text;
         this.type = type;
         this.user = user;
         this.upvotes = upvotes;
-    }
-
-    public String id() {
-        return id;
     }
 
     @Override
@@ -34,7 +31,7 @@ public class Cat {
                 "\n upvotes=" + upvotes;
     }
 
-    public String getUpvotes() {
+    public int getUpvotes() {
         return upvotes;
     }
 }

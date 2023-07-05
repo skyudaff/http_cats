@@ -35,14 +35,13 @@ public class Main {
         CloseableHttpResponse response = httpClient.execute(request);
 
         List<Cat> cats = mapper.readValue(
-
                 response.getEntity().getContent(),
                 new TypeReference<>() {
                 }
         );
 
         cats = cats.stream()
-                .filter(value -> value.getUpvotes() != null)
+                .filter(value -> value.getUpvotes() != 0 && value.getUpvotes() > 0)
                 .collect(Collectors.toList());
 
         cats.forEach(System.out::println);
